@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Dut-Health-App</string>
+    <!-- Define your reasons_array -->
+    <string-array name="reasons_array">
+        <item>Cold/Flu</item>
+        <item>General Checkup</item>
+        <item>Follow-up Appointment</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="time_array">
+        <item>08:00am-08:30am</item>
+        <item>08:30am-09:00am</item>
+        <item>09:00am-09:30am</item>
+        <item>09:30am-10:00am</item>
+        <item>10:00am-10:30am</item>
+        <item>11:00am-11:30am</item>
+        <item>12:00pm-12:30pm</item>
+        <item>14:00pm-14:30pm</item>
+        <item>14:30pm-15:00pm</item>
+    </string-array>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="doctor_seen_hint">Doctor Seen</string>
+    <string name="diagnosis_hint">Diagnosis</string>
+    <string name="next_appointment_hint">Next Appointment</string>
+    <string name="submit_button_label">Submit</string>
+
+    <string name="lorem_ipsum">Your lorem ipsum text here</string>
+
+
+
+</resources>

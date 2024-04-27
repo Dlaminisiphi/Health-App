@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/main"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".SignUp"
+android:orientation="vertical"
+android:background="#fff"
+android:padding="20dp">
+
+<ImageView
+    android:id="@+id/loginImage"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:src="@drawable/icons8_hospital_64"/>
+
+<TextView
+    android:id="@+id/login_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Hello there, Welcome back"
+    android:textSize="40sp"
+    android:fontFamily="@font/bangers"
+    android:textColor="#ADD8E6"/>
+
+<TextView
+    android:id="@+id/login_sub_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Sign up to continue"
+    android:textSize="18sp"
+    android:fontFamily="@font/anticr"/>
+
+<com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:hint="Email"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+
+<com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:passwordToggleEnabled="true"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/userPasswordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Password"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/userPassword2EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint=" Confirm Password"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/signup_btn"
+    android:text="Sign Up"
+    android:background="#000"
+    android:textColor="#fff"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/Take_login"
+    android:background="#00000000"
+    android:text="Already Have An Account? LOGIN"
+    android:layout_gravity="right"
+    android:elevation="0dp"
+    android:textColor="#000"
+    android:fontFamily="@font/anticr"
+    android:layout_margin="5dp"/>
+
+
+</LinearLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SafetyTips">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:background="@drawable/toolbar_header"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Health Tips"
+        android:textSize="40sp"
+        android:textAlignment="center"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/bangers"
+        android:padding="10dp"
+        android:textColor="@color/black" />
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Pink Eye Safety Tip -->
+            <TextView
+                android:layout_width="match_parent"
+                android:fontFamily="@font/anticr"
+                android:textSize="27dp"
+                android:layout_height="wrap_content"
+                android:text="Pink Eye Safety Tip:"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="If you have symptoms of pink eye (conjunctivitis), avoid touching your eyes and wash your hands frequently. Avoid sharing towels, pillowcases, and makeup to prevent the spread of infection."
+                android:layout_marginTop="8dp" />
+
+            <!-- COVID-19 Safety Tip -->
+            <TextView
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:fontFamily="@font/anticr"
+                android:textSize="27dp"
+                android:layout_height="wrap_content"
+                android:text="COVID-19 Safety Tip:"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="If you have symptoms of COVID-19, such as fever, cough, or difficulty breathing, stay home, avoid close contact with others, and seek medical advice. Follow guidelines from health authorities to protect yourself and others."
+                android:layout_marginTop="8dp" />
+
+            <!-- Safe Sex Tips -->
+            <TextView
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:fontFamily="@font/anticr"
+                android:textSize="27dp"
+                android:layout_height="wrap_content"
+                android:text="Safe Sex Tips:"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Practice safe sex by using condoms consistently and correctly. Get tested regularly for sexually transmitted infections (STIs) and encourage your partner to do the same. Communicate openly with your partner about sexual health and boundaries."
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "991895878372",
+    "project_id": "dut-clinic-app-cd81b",
+    "storage_bucket": "dut-clinic-app-cd81b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991895878372:android:97df3531c66071f5fb8af1",
+        "android_client_info": {
+          "package_name": "com.example.dut_health_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAypdw4Id1lUtD45n61wDlDrdUDaoZBbu8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
