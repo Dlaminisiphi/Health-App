@@ -78,7 +78,7 @@ public class Dashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, AllReviews.class);
                 startActivity(intent);
-                finish();
+
 
             }
         });
@@ -88,7 +88,7 @@ public class Dashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, MyBookingHistory.class);
                 startActivity(intent);
-                finish();
+
 
             }
         });
@@ -99,7 +99,6 @@ public class Dashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, UserProfile.class);
                 startActivity(intent);
-                finish();
 
             }
         });
@@ -109,7 +108,6 @@ public class Dashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, WriteReview.class);
                 startActivity(intent);
-                finish();
 
             }
         });
@@ -129,7 +127,6 @@ public class Dashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, ClinicBooking.class);
                 startActivity(intent);
-                finish();
 
             }
         });
@@ -139,7 +136,6 @@ public class Dashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, SafetyTips.class);
                 startActivity(intent);
-                finish();
 
             }
         });
@@ -149,7 +145,6 @@ public class Dashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, EmergencyServices.class);
                 startActivity(intent);
-                finish();
 
             }
         });
@@ -159,7 +154,6 @@ public class Dashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, UserBookings.class);
                 startActivity(intent);
-                finish();
 
             }
         });
