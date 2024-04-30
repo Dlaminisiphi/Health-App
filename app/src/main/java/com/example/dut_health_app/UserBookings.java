@@ -48,30 +48,29 @@ public class UserBookings extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             String currentUserId = currentUser.getUid();
-
-            database.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    list.clear(); // Clear the list before adding new appointments
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                        Appointment appointment = dataSnapshot.getValue(Appointment.class);
-                        // Check if the appointment belongs to the current user and its status is "not seen"
-                        if (appointment != null &&
-                                appointment.getUserId().equals(currentUserId) &&
-                                appointment.getStatus().equals("not seen")) {
-                            list.add(appointment);
-                        }
-                    }
-                    // Notify the adapter that the data has changed
-                    userBookingAdaptor.notifyDataSetChanged();
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    // Handle error
-                }
-            });
+            fetchAppointmentsForCurrentUser(currentUserId);
         }
+    }
 
+    private void fetchAppointmentsForCurrentUser(String userId) {
+        DatabaseReference appointmentsRef = FirebaseDatabase.getInstance().getReference("appointments");
+        appointmentsRef.orderByChild("userId").equalTo(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Appointment appointment = snapshot.getValue(Appointment.class);
+                    if (appointment != null && appointment.getStatus().equals("not seen")) {
+                        list.add(appointment);
+                    }
+                }
+                recyclerView.setAdapter(userBookingAdaptor);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(UserBookings.this, "No Appointments", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

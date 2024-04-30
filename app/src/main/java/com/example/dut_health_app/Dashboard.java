@@ -21,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Dashboard extends AppCompatActivity {
-    CardView Profile, LogOut, BookApointment, EmergencyServices, MyBookings, Review, SafetyTips, WriteARiview;
+    CardView Profile, LogOut, BookApointment, EmergencyServices, MyBookings, Review, SafetyTips, WriteARiview,MyHistory;
     TextView DashBoardName;
     FirebaseUser user;
 
@@ -38,6 +38,7 @@ public class Dashboard extends AppCompatActivity {
         LogOut = findViewById(R.id.Log_Out_Btn);
         BookApointment = findViewById(R.id.Booking_Btn);
         DashBoardName = findViewById(R.id.dashboard_name);
+        MyHistory=findViewById(R.id.My_History_Btn);
         EmergencyServices = findViewById(R.id.Emergency_Btn);
         MyBookings = findViewById(R.id.My_Bookings_Btn);
         Review = findViewById(R.id.Reviews_Btn);
@@ -76,6 +77,16 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard.this, AllReviews.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
+        MyHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Dashboard.this, MyBookingHistory.class);
                 startActivity(intent);
                 finish();
 

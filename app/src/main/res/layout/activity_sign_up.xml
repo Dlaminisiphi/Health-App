@@ -76,7 +76,12 @@ android:padding="20dp">
             android:hint=" Confirm Password"/>
 
     </com.google.android.material.textfield.TextInputLayout>
-
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:layout_height="wrap_content" />
 <Button
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -87,11 +92,7 @@ android:padding="20dp">
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"/>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
 
 <Button
     android:layout_width="match_parent"

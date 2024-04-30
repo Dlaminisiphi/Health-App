@@ -43,13 +43,16 @@ public class AdminUserBooking extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         // Attach listeners to retrieve data from Firebase Database
-        appointmentsRef.addValueEventListener(new ValueEventListener() {
+// Attach listeners to retrieve data from Firebase Database
+        appointmentsRef.orderByChild("status").equalTo("Not Seen").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 appointments.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Appointment appointment = snapshot.getValue(Appointment.class);
-                    appointments.add(appointment);
+                    if (appointment != null) {
+                        appointments.add(appointment);
+                    }
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -59,6 +62,8 @@ public class AdminUserBooking extends AppCompatActivity {
                 // Handle database error
             }
         });
+
+
 
         userProfilesRef.addValueEventListener(new ValueEventListener() {
             @Override

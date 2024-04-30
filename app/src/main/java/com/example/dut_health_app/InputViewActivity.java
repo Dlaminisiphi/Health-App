@@ -2,14 +2,19 @@ package com.example.dut_health_app;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Properties;
 import java.util.UUID;
@@ -52,7 +57,7 @@ public class InputViewActivity extends AppCompatActivity {
                 String doctorSeen = editTextDoctorSeen.getText().toString().trim();
                 String diagnosis = editTextDiagnosis.getText().toString().trim();
                 String nextAppointment = editTextNextAppointment.getText().toString().trim();
-                String status="seen";
+                String status = "Attended";
 
                 // Get appointmentId and userId passed from previous Activity
                 String appointmentId = getIntent().getStringExtra("appointmentId");
@@ -64,29 +69,52 @@ public class InputViewActivity extends AppCompatActivity {
                 appointmentsRef.child(appointmentId).child("nextAppointment").setValue(nextAppointment);
                 appointmentsRef.child(appointmentId).child("status").setValue(status);
 
+                // Retrieve the user's email from the database
+                DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("userInfo").child(userId);
+                userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            UserProfileInfo userProfileInfo = dataSnapshot.getValue(UserProfileInfo.class);
+                            if (userProfileInfo != null) {
+                                String userEmail = userProfileInfo.getUserEmail();
+                                // Send the email using the retrieved email
+                                new SendEmailTask(userEmail, doctorSeen, diagnosis, nextAppointment).execute();
+                            }
+                        }
+                    }
 
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // Handle any errors
+                        Log.e("InputViewActivity", "Error retrieving user data: " + databaseError.getMessage());
+                    }
+                });
 
                 // Finish the activity or perform any other action
                 finish();
             }
         });
     }
+
     private class SendEmailTask extends AsyncTask<Void, Void, Boolean> {
         private String assignedPerson;
-        private String date;
-        private String time;
-        private String reason;
+        private String doctorSeen;
+        private String nextAppointment;
+        private String diagnosis;
 
-        public SendEmailTask(String assignedPerson, String date, String time, String reason) {
+        public SendEmailTask(String assignedPerson, String doctorSeen, String nextAppointment, String diagnosis) {
             this.assignedPerson = assignedPerson;
-            this.date = date;
-            this.time = time;
-            this.reason = reason;
+            this.doctorSeen = doctorSeen;
+            this.nextAppointment = nextAppointment;
+            this.diagnosis = diagnosis;
         }
 
+        // Inside the SendEmailTask class
         @Override
         protected Boolean doInBackground(Void... params) {
             try {
+                // Generate a unique reference number for the email
                 UUID uuid = UUID.randomUUID();
                 String referenceNumber = uuid.toString();
 
@@ -108,14 +136,20 @@ public class InputViewActivity extends AppCompatActivity {
                 Message message = new MimeMessage(session);
                 message.setFrom(new InternetAddress("flaskschoolproject@gmail.com"));
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(assignedPerson));
-                message.setSubject("Appointment Confirmation [" + referenceNumber + "]");
-                message.setText("Hello,\n" +
-                        "Your appointment has been successfully booked!\n\n" +
-                        "Date: " + date + "\n" +
-                        "Time: " + time + "\n" +
-                        "Reason: " + reason + "\n\n" +
-                        "Thank you for choosing our service. We look forward to seeing you.");
+                message.setSubject("Appointment Summary [" + referenceNumber + "]");
 
+                // Compose the email body
+                String emailBody =
+                        "Thank you for visiting Dut Clinic. Below, you'll find details regarding your recent appointment:\n\n" +
+                                "Doctor Attended By: " + doctorSeen + "\n" +
+                                "Doctors notes: " + diagnosis + "\n" +
+                                "Next Scheduled Appointment: " + nextAppointment + "\n\n" +
+                                "Thank you for choosing Dut Clinic for your healthcare needs.\n\n" +
+                                "Best regards,\n" +
+                                "Dut Clinic";
+                message.setText(emailBody);
+
+                // Send the email
                 Transport.send(message);
                 return true;
             } catch (Exception e) {
@@ -123,14 +157,6 @@ public class InputViewActivity extends AppCompatActivity {
                 return false;
             }
         }
-
-        @Override
-        protected void onPostExecute(Boolean success) {
-            if (success) {
-                Toast.makeText(InputViewActivity.this, "Appointment confirmation email sent", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(InputViewActivity.this, "Failed to send appointment confirmation email", Toast.LENGTH_SHORT).show();
-            }
-        }
     }
 }
+

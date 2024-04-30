@@ -73,16 +73,18 @@ public class SetUpActivity extends AppCompatActivity {
         String nextKinName = nextOfKinName.getText().toString().trim();
         String nextKinPhone = nextOfKinPhoneNumber.getText().toString().trim();
         String addr = address.getText().toString().trim();
-        String id=user.getUid();
+        String userEmail = user.getEmail(); // Get user email from FirebaseAuth
+        String id = user.getUid();
 
-        UserProfileInfo userProfileInfo = new UserProfileInfo(id,name, number, phone, nextKinName, nextKinPhone, addr);
+        UserProfileInfo userProfileInfo = new UserProfileInfo(id, name, number, phone, nextKinName, nextKinPhone, addr);
+        userProfileInfo.setUserEmail(userEmail); // Set user email in UserProfileInfo
+
         mDatabase.child("userInfo").child(userId).setValue(userProfileInfo, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                 if (databaseError != null) {
                     // There was an error saving the data
-                    Toast.makeText(SetUpActivity.this, "Information Uploaded "+ databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(SetUpActivity.this, "Failed to upload information", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SetUpActivity.this, "Failed to upload information: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                 } else {
                     // Data saved successfully
                     Toast.makeText(SetUpActivity.this, "Information Uploaded", Toast.LENGTH_SHORT).show();
@@ -93,5 +95,6 @@ public class SetUpActivity extends AppCompatActivity {
             }
         });
     }
+
 }
 

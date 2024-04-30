@@ -42,13 +42,16 @@ public class AdminBookingAdapter extends RecyclerView.Adapter<AdminBookingAdapte
 
     @Override
     public void onBindViewHolder(@NonNull AdminBookingViewHolder holder, int position) {
-        Appointment appointment = mAppointments.get(position);
-        UserProfileInfo userProfile = mUserProfiles.get(position);
+        // Check if position is within bounds of both lists
+        if (position < mAppointments.size() && position < mUserProfiles.size()) {
+            Appointment appointment = mAppointments.get(position);
+            UserProfileInfo userProfile = mUserProfiles.get(position);
 
-        holder.tvName.setText("Patient Name: "+userProfile.getFullName());
-        holder.tvReasonForVisit.setText("Appointment Reason: "+appointment.getReason());
-        holder.tvStudentNumber.setText("Patient Student Number: "+userProfile.getStudentNumber());
-        holder.tvAppointmentDate.setText("Appointment Date and Time: "+appointment.getDate() + " " + appointment.getTime());
+            holder.tvName.setText("Patient Name: " + userProfile.getFullName());
+            holder.tvReasonForVisit.setText("Appointment Reason: " + appointment.getReason());
+            holder.tvStudentNumber.setText("Patient Student Number: " + userProfile.getStudentNumber());
+            holder.tvAppointmentDate.setText("Appointment Date and Time: " + appointment.getDate() + " " + appointment.getTime());
+        }
     }
 
     @Override

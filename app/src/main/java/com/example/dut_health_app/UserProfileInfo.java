@@ -5,6 +5,8 @@ public class UserProfileInfo {
 
     private String userID; // New field
 
+    private String userEmail;
+
     private String fullName, studentNumber, phoneNumber, nextOfKinName, nextOfKinPhoneNumber, address;
 
     public UserProfileInfo() {
@@ -78,5 +80,14 @@ public class UserProfileInfo {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }
