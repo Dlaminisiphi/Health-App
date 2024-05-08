@@ -67,4 +67,8 @@ dependencies {
     implementation("com.sun.mail:android-activation:1.6.7")
     implementation ("androidx.appcompat:appcompat:1.4.0")
 
+    implementation("com.google.ai.client.generativeai:generativeai:0.3.0")
+    implementation("com.google.guava:guava:31.0.1-android")
+    implementation("org.reactivestreams:reactive-streams:1.0.4")
+
 }

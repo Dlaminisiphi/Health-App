@@ -32,7 +32,7 @@
                     android:id="@+id/dashboard_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hello Siphumelele Dlamini"
+                    android:text="Hello thobani"
                     android:textSize="35dp"
                     android:fontFamily="@font/bangers"
                     android:padding="10dp"
@@ -284,6 +284,41 @@
                             android:fontFamily="@font/anticr"
                             android:text="Safety Tips"
                             android:textColor="@color/black" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/bot_Btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="12dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/icons8_message_bot_80" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="@font/anticr"
+                            android:text="Health Bot"
+                            android:textColor="@color/black" />
+
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>

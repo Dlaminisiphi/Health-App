@@ -44,7 +44,7 @@ public class AdminUserBooking extends AppCompatActivity {
 
         // Attach listeners to retrieve data from Firebase Database
 // Attach listeners to retrieve data from Firebase Database
-        appointmentsRef.orderByChild("status").equalTo("Not Seen").addValueEventListener(new ValueEventListener() {
+        appointmentsRef.orderByChild("status").equalTo("not seen").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 appointments.clear();

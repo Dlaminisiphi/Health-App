@@ -15,6 +15,9 @@
         android:theme="@style/Theme.DutHealthApp"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
+        <activity
             android:name=".MyBookingHistory"
             android:exported="false" />
         <activity

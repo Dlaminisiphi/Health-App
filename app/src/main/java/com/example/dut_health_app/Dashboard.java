@@ -21,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Dashboard extends AppCompatActivity {
-    CardView Profile, LogOut, BookApointment, EmergencyServices, MyBookings, Review, SafetyTips, WriteARiview,MyHistory;
+    CardView Profile, LogOut, BookApointment, EmergencyServices, MyBookings, Review, SafetyTips, WriteARiview,MyHistory,Bot;
     TextView DashBoardName;
     FirebaseUser user;
 
@@ -44,6 +44,7 @@ public class Dashboard extends AppCompatActivity {
         Review = findViewById(R.id.Reviews_Btn);
         WriteARiview = findViewById(R.id.Review_Btn);
         SafetyTips = findViewById(R.id.Saftey_Btn);
+        Bot=findViewById(R.id.bot_Btn);
         // Initialize FirebaseAuth instance
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -70,6 +71,16 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // Handle errors
+            }
+        });
+
+        Bot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Dashboard.this, MainActivity2.class);
+                startActivity(intent);
+
+
             }
         });
 
